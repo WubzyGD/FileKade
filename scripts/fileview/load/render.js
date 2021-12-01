@@ -33,6 +33,7 @@ module.exports = (dir) => {
         cf.className = 'file-name';
         if (file.name.length > 20) {
             cf.classList.add('large-file-name');
+            cf.style.animationDuration = `${file.name.length / 2}s`;
             let lfnc = document.createElement('div');
             lfnc.className = 'large-file-name-container';
             cfc.appendChild(lfnc);
