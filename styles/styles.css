@@ -1,0 +1,23 @@
+body {
+    background-image: linear-gradient(to right, #000000a8 0%, #000000a8 100%), url(../assets/images/neon.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #d3d3d3;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.rise {
+    animation-name: pullup;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
+    opacity: 0;
+}
+
+@keyframes pullup {
+    from {transform: translateY(100vh);}
+    0% {opacity: 0;}
+    90% {opacity: 100%;}
+    100% {opacity: 100%;}
+    to {transform: translateY(0);}
+}

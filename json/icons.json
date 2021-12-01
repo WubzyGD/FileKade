@@ -1,0 +1,25 @@
+{
+    "file": {
+        "o": "c",
+        "bat": "bat",
+        "cert": "certificate",
+        "cc": "cpp",
+        "com": "exe",
+        "7zip": "zip",
+        "ts": "typescript",
+        "d.ts": "typescript",
+        "png": "image",
+        "jpg": "image",
+        "doc": "word",
+        "docx": "word",
+        "mp4": "video",
+        "gif": "image",
+        "js": "javascript",
+        "xlsx": "excel",
+        "xls": "excel",
+        "gitignore": "git"
+    },
+    "folder": {
+
+    }
+}

@@ -1,0 +1,43 @@
+.controls, #header-nav, #header-buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: space-around;
+}
+
+.controls div {align-self: center;}
+
+
+#header-nav {
+    margin-top: 8px;
+    column-gap: 5px;
+}
+
+
+.header-button {
+    color: white;
+    font-size: 19px;
+    padding: 4px 8px;
+    margin: 8px 0 2px 3px;
+}
+
+#header-buttons {margin-right: 10px; margin-left: 13px;}
+
+#header-nav p, .header-button {
+    cursor: pointer;
+    transition: background-color .2s ease-out;
+    width: max-content;
+    border-radius: 5px 5px;
+}
+.header-button:hover, #header-nav p:hover {background-color: #90909089;}
+.header-button:active, #header-nav p:active {background-color: #909090c0;}
+
+#header-nav p {
+    font-size: 14px;
+    color: #dfdfdfdd;
+    padding: 3px 6px;
+}
+
+.header-nav-arrow {filter: invert(57%) sepia(7%) saturate(4117%) hue-rotate(198deg) brightness(89%) contrast(96%);}
