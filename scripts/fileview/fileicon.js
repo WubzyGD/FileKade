@@ -18,8 +18,8 @@ module.exports = (fpath, name) => {
         }*/
         else {
             //console.log(path.extname(name));
-            if (name.includes('.') && fs.existsSync(`./assets/icons/extension/${path.extname(name).slice(1)}.svg`)) {icon = `./assets/icons/extension/${path.extname(name).slice(1)}.svg`;}
-            else if (name.includes('.') && Object.keys(icons.file).includes(path.extname(name).slice(1))) {icon = `./assets/icons/extension/${icons.file[path.extname(name).slice(1)]}.svg`;}
+            if (name.includes('.') && fs.existsSync(`./assets/icons/extension/${(path.extname(name).toLowerCase()).slice(1)}.svg`)) {icon = `./assets/icons/extension/${(path.extname(name).toLowerCase()).slice(1)}.svg`;}
+            else if (name.includes('.') && Object.keys(icons.file).includes((path.extname(name).toLowerCase()).slice(1))) {icon = `./assets/icons/extension/${icons.file[(path.extname(name).toLowerCase()).slice(1)]}.svg`;}
             else {icon = './assets/icons/base/file.svg';}
         }
     } catch {icon = './assets/icons/base/file.svg';}
