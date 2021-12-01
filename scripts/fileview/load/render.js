@@ -31,8 +31,14 @@ module.exports = (dir) => {
         cfc.appendChild(im);
         let cf = document.createElement('b');
         cf.className = 'file-name';
+        if (file.name.length > 20) {
+            cf.classList.add('large-file-name');
+            let lfnc = document.createElement('div');
+            lfnc.className = 'large-file-name-container';
+            cfc.appendChild(lfnc);
+            lfnc.appendChild(cf);
+        } else {cfc.appendChild(cf);}
         cf.innerHTML = file.name;
-        cfc.appendChild(cf);
         let isd = document.createElement('p');
         isd.className = 'file-type';
         isd.innerHTML = file.type;

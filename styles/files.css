@@ -72,3 +72,25 @@
     background-size: 200% auto;
     animation: shine 10s linear infinite;
 }
+
+@keyframes scroll-text {
+    from {transform: translateX(100%);}
+    to {transform: translateX(-100%);}
+}
+
+.large-file-name {
+    position: absolute;
+    animation: scroll-text 10s linear infinite;
+    width: max-content;
+    height: max-content;
+    margin: 0 0;
+}
+
+.large-file-name-container {
+    overflow: hidden;
+    position: relative;
+    margin: 0 0;
+    padding: 0 0;
+    width: 27%;
+    height: 100%;
+}
