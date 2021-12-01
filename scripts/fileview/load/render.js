@@ -31,9 +31,9 @@ module.exports = (dir) => {
         cfc.appendChild(im);
         let cf = document.createElement('b');
         cf.className = 'file-name';
-        if (file.name.length > 20) {
+        if (file.name.length > 25) {
             cf.classList.add('large-file-name');
-            cf.style.animationDuration = `${file.name.length / 2}s`;
+            cf.style.animationDuration = `${file.name.length / 2.5}s`;
             let lfnc = document.createElement('div');
             lfnc.className = 'large-file-name-container';
             cfc.appendChild(lfnc);
