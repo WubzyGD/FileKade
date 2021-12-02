@@ -50,9 +50,9 @@
 .file > * {align-self: center;}
 .file-name {flex-basis: 27%;}
 .file-type {flex-basis: 25%;}
-.file-size {flex-basis: 20%;}
+.file-size {flex-basis: 17%;}
 .file-icon {flex-basis: 2%;}
-.file-date {flex-basis: 24%;}
+.file-date {flex-basis: 27%;}
 
 .file-icon {
     max-height: 30px;
