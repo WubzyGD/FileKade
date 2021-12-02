@@ -1,5 +1,7 @@
 const loadHierarchy = require("../hierarchy");
 
+const isOverflowing = require('../../dep/overflowing');
+
 module.exports = (dir) => {
     const refresh = require("../refresh");
 
@@ -31,15 +33,17 @@ module.exports = (dir) => {
         cfc.appendChild(im);
         let cf = document.createElement('b');
         cf.className = 'file-name';
-        if (file.name.length > 25) {
+        cf.innerHTML = file.name;
+        cfc.appendChild(cf);
+        if (isOverflowing(cf)) {
+            cfc.removeChild(cf);
             cf.classList.add('large-file-name');
             cf.style.animationDuration = `${file.name.length / 2.5}s`;
             let lfnc = document.createElement('div');
             lfnc.className = 'large-file-name-container';
             cfc.appendChild(lfnc);
             lfnc.appendChild(cf);
-        } else {cfc.appendChild(cf);}
-        cf.innerHTML = file.name;
+        }
         let isd = document.createElement('p');
         isd.className = 'file-type';
         isd.innerHTML = file.type;

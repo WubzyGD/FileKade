@@ -32,6 +32,8 @@
 .file-name {
     color: white;
     order: 0;
+    overflow: visible;
+    white-space: nowrap;
 }
 
 .file > * {
@@ -74,8 +76,8 @@
 }
 
 @keyframes scroll-text {
-    from {transform: translateX(35%);}
-    to {transform: translateX(-100.5%);}
+    from {transform: translateX(50%);}
+    to {transform: translateX(-105%);}
 }
 
 .large-file-name {
@@ -86,6 +88,7 @@
     margin: 0 0;
     transform: translateX(0%);
     animation-fill-mode: both;
+    top: 4px;
 }
 
 .large-file-name-container {

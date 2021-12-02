@@ -11,7 +11,7 @@ body {
     animation-name: pullup;
     animation-duration: .5s;
     animation-timing-function: ease-out;
-    opacity: 0;
+    animation-fill-mode: both;
 }
 
 @keyframes pullup {
