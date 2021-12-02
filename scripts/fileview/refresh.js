@@ -22,5 +22,6 @@ module.exports = (newPath) => {
     let nav = document.createElement('div');
     nav.setAttribute('id', 'header-nav');
     document.getElementById('controls').appendChild(nav);
+    window.scrollTo(0, 0);
     loadDir(newPath);
 };
