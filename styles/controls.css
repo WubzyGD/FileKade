@@ -7,6 +7,8 @@
     align-content: space-around;
 }
 
+.controls {margin-top: 30px;}
+
 .controls div {align-self: center;}
 
 
