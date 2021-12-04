@@ -1,4 +1,5 @@
 {
-  "ctrl+r": "reload",
-  "command+r": "reload"
+    "ctrl+r": "reload",
+    "command+r": "reload",
+    "ctrl+shift+i": "devtool"
 }

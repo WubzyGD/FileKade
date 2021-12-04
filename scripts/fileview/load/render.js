@@ -56,6 +56,7 @@ module.exports = (dir) => {
         size.className = 'file-size';
         size.innerHTML = file.sizeString;
         cfc.appendChild(size);
+        Array.from(cfc.children).forEach(el => el.classList.add('nosel'));
         num++;
     }
 

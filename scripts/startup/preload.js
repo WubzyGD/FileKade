@@ -21,4 +21,11 @@ window.addEventListener('DOMContentLoaded', () => {
             if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
         }, 100);
     }
+
+    require('../keybinds/handleKey')();
+});
+
+window.addEventListener('contextmenu', e => {
+    e.preventDefault();
+    
 });

@@ -16,6 +16,7 @@ module.exports = (newPath) => {
         let temp = document.createElement('p');
         temp.innerHTML = k;
         temp.style = `flex-basis: ${headers[k]}%;`;
+        temp.className = 'nosel';
         fh.appendChild(temp);
     });
     document.getElementById('header-nav').remove();
