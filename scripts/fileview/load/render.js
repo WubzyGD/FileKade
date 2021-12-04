@@ -1,6 +1,7 @@
 const loadHierarchy = require("../hierarchy");
 
 const isOverflowing = require('../../dep/overflowing');
+const refresh = require("../refresh");
 
 module.exports = (dir) => {
     const refresh = require("../refresh");
@@ -17,6 +18,12 @@ module.exports = (dir) => {
             window.kade.elc = true;
             if (cfc.classList.contains('file-active')) {if (file.dir) {refresh(`${window.kade.cpath}\\${file.name}`);}}
             cfc.classList.add('file-active');
+            if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
+            window.kade.cl = cfc;
+        };
+        cfc.oncontextmenu = function () {
+            window.kade.elc = true;
+            if (!cfc.classList.contains('file-active')) {cfc.classList.add('file-active');}
             if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
             window.kade.cl = cfc;
         };

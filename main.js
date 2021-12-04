@@ -17,7 +17,7 @@ async function createWindow () {
         },
         titleBarStyle: "hidden",
         //titleBarOverlay: true,
-    })
+    });
 
     // and load the index.html of the app.
     mainWindow.maximize();

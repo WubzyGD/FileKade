@@ -1,0 +1,35 @@
+#ctx {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: #d4d4d4;
+    border-radius: 7px 7px;
+    position: absolute;
+    background-color: #101010df;
+    padding: 7px 5px;
+    border: 1px solid #af2188a4;
+}
+
+#ctx hr {
+    margin: 4px 5px;
+    border-color: #f3f3f3ca;
+}
+
+.ctx-item p {margin: 0 0; padding: 0 0;}
+
+.ctx-item {
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color .1s ease-in;
+    margin: 0 0;
+    padding: 4px;
+}
+.ctx-item:hover {background-color: #90909049;}
+
+.ctx-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
+    row-gap: 2px;
+}
