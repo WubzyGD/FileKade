@@ -8,7 +8,8 @@ const trimext = require("../../../json/trimext.json");
 const extensions = require("../../../json/extensions.json");
 const getsize = require("../../fileview/filesize");
 
-module.exports = () => {
+module.exports = (check=false) => {
+    let load = check ? window.kade.chdir : window.kade.cdir;
     let dir = window.kade.cpath;
     let ldir = fs.readdirSync(dir);
 
@@ -37,6 +38,6 @@ module.exports = () => {
             ofile.sizeString = '';
             ofile.dir = true;
         }
-        window.kade.cdir.push(ofile);
+        load.push(ofile);
     }
 };

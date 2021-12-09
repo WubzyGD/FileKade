@@ -1,26 +1,27 @@
-module.exports = (mode) => {
+module.exports = (mode, check=false) => {
     mode = mode || window.kade.sort;
+    let ts = check ? window.kade.chdir : window.kade.cdir;
     switch (mode) {
         case 'Name':
-            window.kade.cdir.sort((a, b) => {
+            ts.sort((a, b) => {
                 a = a.name.toLowerCase();
                 b = b.name.toLowerCase();
                 return a > b ? 1 : a < b ? -1 : 0;
             });
             break;
         case 'Date':
-            window.kade.cdir.sort((a, b) => a.lastModified - b.lastModified);
+            ts.sort((a, b) => a.lastModified - b.lastModified);
             break;
         case 'Type':
-            window.kade.cdir.sort((a, b) => {
+            ts.sort((a, b) => {
                 a = a.type.toLowerCase();
                 b = b.type.toLowerCase();
                 return a > b ? 1 : a < b ? -1 : 0;
             });
             break;
         case 'Size':
-            window.kade.cdir.sort((a, b) => a.size - b.size);
+            ts.sort((a, b) => a.size - b.size);
             break;
     }
-    if (!window.kade.ascend) {window.kade.cdir.reverse();}
+    if (!window.kade.ascend) {ts.reverse();}
 };

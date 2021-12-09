@@ -2,7 +2,8 @@ const loadDir = require('./load/loaddir');
 
 const headers = require('../../json/headers.json');
 
-module.exports = (newPath) => {
+module.exports = (newPath, options={animate:true,scroll:true,resetNav:true}) => {
+    ['animate', 'scroll', 'resetNav'].forEach(k => {if (typeof options[k] === 'undefined') {options[k] = true;}});
     document.getElementById('files').remove();
     let files = document.createElement('div');
     files.className = 'files';
@@ -19,10 +20,12 @@ module.exports = (newPath) => {
         temp.className = 'nosel';
         fh.appendChild(temp);
     });
-    document.getElementById('header-nav').remove();
-    let nav = document.createElement('div');
-    nav.setAttribute('id', 'header-nav');
-    document.getElementById('controls').appendChild(nav);
-    window.scrollTo(0, 0);
-    loadDir(newPath);
+    if (options.resetNav) {
+        document.getElementById('header-nav').remove();
+        let nav = document.createElement('div');
+        nav.setAttribute('id', 'header-nav');
+        document.getElementById('controls').appendChild(nav);
+    }
+    if (options.scroll) {window.scrollTo(0, 0);}
+    loadDir(newPath, options);
 };

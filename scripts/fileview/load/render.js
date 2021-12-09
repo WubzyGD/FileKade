@@ -1,9 +1,8 @@
 const loadHierarchy = require("../hierarchy");
 
 const isOverflowing = require('../../dep/overflowing');
-const refresh = require("../refresh");
 
-module.exports = (dir) => {
+module.exports = (dir, options) => {
     const refresh = require("../refresh");
 
     let cdir = dir || window.kade.cdir;
@@ -13,7 +12,7 @@ module.exports = (dir) => {
         const exp = document.getElementById('files');
         let cfc = document.createElement("div");
         cfc.className = 'file';
-        cfc.classList.add('rise');
+        if (options.animate) {cfc.classList.add('rise');}
         cfc.onclick = function () {
             window.kade.elc = true;
             if (cfc.classList.contains('file-active')) {if (file.dir) {refresh(`${window.kade.cpath}\\${file.name}`);}}
@@ -27,11 +26,13 @@ module.exports = (dir) => {
             if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
             window.kade.cl = cfc;
         };
-        cfc.style = `animation-delay: ${num * .03}s`;
-        cfc.onanimationend = () => {
-            cfc.style = '';
-            cfc.classList.remove('rise');
-        };
+        if (options.animate) {
+            cfc.style = `animation-delay: ${num * .03}s`;
+            cfc.onanimationend = () => {
+                cfc.style = '';
+                cfc.classList.remove('rise');
+            };
+        }
         exp.appendChild(cfc);
         let im = document.createElement('img');
         im.src = file.icon;
@@ -67,5 +68,5 @@ module.exports = (dir) => {
         num++;
     }
 
-    loadHierarchy();
+    if (options.resetNav) {loadHierarchy();}
 };

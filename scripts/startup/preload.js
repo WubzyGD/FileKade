@@ -2,15 +2,18 @@ const os = require('os');
 
 const setButtons = require('./setbuttons');
 const hideContext = require('../contextmenu/hidecontext');
+const lightRefresh = require('../fileview/lightrefresh');
+const checkDir = require('../fileview/checkdir');
 
 window.addEventListener('DOMContentLoaded', () => {
-    window.kade = {};
-
-    window.kade.elc = false;
-    window.kade.cpath = '';
-    window.kade.sort = 'Name';
-    window.kade.ascend = true;
-    window.kade.context = false;
+    window.kade = {
+        elc: false,
+        cpath: '',
+        sort: 'Name',
+        ascend: true,
+        context: false,
+        chdir: []
+    };
 
     const startDir = `${os.homedir}\\Desktop`;
 
@@ -26,6 +29,9 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     document.getElementById('ctx').style.display = 'none';
+
+    window.kade.refreshInterval = setInterval(lightRefresh, 180000);
+    window.kade.checkDirInterval = setInterval(checkDir, 5000);
 
     require('../keybinds/handleKey')();
 });
