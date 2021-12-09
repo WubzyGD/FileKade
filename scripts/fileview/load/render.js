@@ -25,6 +25,7 @@ module.exports = (dir, options) => {
             if (!cfc.classList.contains('file-active')) {cfc.classList.add('file-active');}
             if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
             window.kade.cl = cfc;
+            window.kade.ctxel = cfc;
         };
         if (options.animate) {
             cfc.style = `animation-delay: ${num * .03}s`;

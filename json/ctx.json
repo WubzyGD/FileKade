@@ -1,0 +1,14 @@
+[
+    [
+        {"name": "New Folder", "id": "ctx-new-folder", "onclick": "newfolder"}
+    ],
+    [
+        {"name": "Sort by: Name", "id": "ctx-sort-by", "onclick": "changesort"},
+        {"name": "Order: Ascending", "id": "ctx-ascension", "onclick":  "changeascend"}
+    ],
+    [
+        {"name": "Reload", "id": "ctx-reload", "onclick": "reload"},
+        {"name": "Refresh", "id": "ctx-refresh", "onclick": "refresh"},
+        {"name": "Options", "id": "ctx-options", "onclick": "options"}
+    ]
+]

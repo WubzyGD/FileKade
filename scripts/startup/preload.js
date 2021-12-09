@@ -17,6 +17,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const startDir = `${os.homedir}\\Desktop`;
 
+    require('./initcontext')();
+
     require('../fileview/refresh')(startDir);
     setButtons();
 
@@ -24,13 +26,12 @@ window.addEventListener('DOMContentLoaded', () => {
         setTimeout(function () {
             if (window.kade.elc) {window.kade.elc = false; return;}
             if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
+            window.kade.ctxel = null;
         }, 100);
         if (window.kade.context) {hideContext(window);}
     }
 
-    document.getElementById('ctx').style.display = 'none';
-
-    window.kade.refreshInterval = setInterval(lightRefresh, 180000);
+    window.kade.refreshInterval = setInterval(lightRefresh, 60000);
     window.kade.checkDirInterval = setInterval(checkDir, 5000);
 
     require('../keybinds/handleKey')();
