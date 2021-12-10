@@ -3,7 +3,6 @@ const ctxl = require('../../json/ctx.json');
 module.exports = () => {
     document.getElementById('ctx').style.display = 'none';
     const ctx = document.getElementById('ctx');
-    console.log(ctxl);
     try {
         for (let i = 0; i < ctxl.length; i++) {
             let k = ctxl[i];

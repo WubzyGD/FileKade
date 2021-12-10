@@ -1,0 +1,49 @@
+.modal {
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 7px 7px;
+    border: 1px solid #af2188a4;
+    background-color: #171717da;
+    padding: 6px 8px;
+}
+
+.modal h1, .modal h2, .modal h3, .modal h4 {
+    color: #af2188;
+    font-family: 'Nunito', sans-serif;
+    margin: 10px;
+}
+
+.modal p, .modal b {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    margin: 8px 10px;
+}
+
+.modal input, .modal button {
+    background-color: #1e27423f;
+    color: white;
+    border: #5d60ca solid 1px;
+    border-radius: 3px;
+    width: auto;
+    margin: 10px 4px 10px 8px;
+    font-size: .82em;
+    padding: 5px 7px;
+    font-family: "Monsterrat", sans-serif;
+    transition: background-color .65s ease-in-out, border-color .65s ease-in-out, color .65s ease-in-out;
+    cursor: pointer;
+    text-align: left;
+}
+.modal input:hover {
+    border-color: #a172a6;
+}
+.modal input:focus, .modal input:active {
+    background-color: #171717d8;
+    color: white;
+    outline: none;
+}
+
+.modal .button-container, input, .modal .button-container, button {display: inline-block;}

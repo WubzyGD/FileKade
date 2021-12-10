@@ -12,7 +12,8 @@ window.addEventListener('DOMContentLoaded', () => {
         sort: 'Name',
         ascend: true,
         context: false,
-        chdir: []
+        chdir: [],
+        ctxFunc: {}
     };
 
     const startDir = `${os.homedir}\\Desktop`;

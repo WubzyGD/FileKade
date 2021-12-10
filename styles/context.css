@@ -2,11 +2,11 @@
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
     color: #d4d4d4;
+    border: 1px solid #af2188a4;
     border-radius: 7px 7px;
     position: absolute;
     background-color: #101010df;
     padding: 7px 5px;
-    border: 1px solid #af2188a4;
 }
 
 #ctx hr {
