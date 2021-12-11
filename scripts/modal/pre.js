@@ -5,5 +5,7 @@ module.exports = (id) => {
     bl.id = 'modal-block';
     document.body.appendChild(bl);
     window.kade.modal = true;
+    document.getElementById('modal-block').style.top = `${window.scrollY}px`;
+    document.body.style.overflow = 'hidden';
     transit(id, true);
 };

@@ -8,7 +8,6 @@ const showError = require('../modal/common/error');
 const clearModals = require('../modal/clearmodals');
 
 module.exports = () => {
-    console.log('e');
     if (window.kade.modal) {console.log('hboonk'); return;}
     preModal('new-folder-modal-container');
     let modal = document.createElement('div');
