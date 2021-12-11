@@ -1,4 +1,5 @@
 module.exports = (e, target, window) => {
+    if (window.kade.modal) {return;}
     window.kade.context = true;
     let ctx = document.getElementById('ctx');
     ctx.style.display = 'block';
