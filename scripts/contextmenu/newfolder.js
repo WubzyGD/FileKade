@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const mousetrap = require('../dep/mousetrap');
 
 const lightRefresh = require('../fileview/lightrefresh');
 const preModal = require('../modal/pre');
@@ -56,4 +57,12 @@ module.exports = () => {
         }
     };
     cont.appendChild(conf);
+    input.focus();
+    let msm = new mousetrap(modal);
+    msm.bind('esc', () => {
+        lightRefresh();
+        modal.remove();
+        postModal(modal.id);
+    });
+    msm.bind('enter', () => {conf.click();});
 }
