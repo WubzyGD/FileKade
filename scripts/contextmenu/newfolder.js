@@ -2,8 +2,15 @@ const fs = require('fs');
 const path = require('path');
 
 const lightRefresh = require('../fileview/lightrefresh');
+const preModal = require('../modal/pre');
+const postModal = require('../modal/post');
+const showError = require('../modal/common/error');
+const clearModals = require('../modal/clearmodals');
 
 module.exports = () => {
+    console.log('e');
+    if (window.kade.modal) {console.log('hboonk'); return;}
+    preModal('new-folder-modal-container');
     let modal = document.createElement('div');
     modal.className = 'modal';
     modal.id = 'new-folder-modal-container';
@@ -29,19 +36,25 @@ module.exports = () => {
     let conf = document.createElement('button');
     conf.innerHTML = 'Create';
     conf.onclick = () => {
-        input.value.trim();
-        if (fs.existsSync(path.join(window.kade.cpath, input.value))) {
-            if (!input.value.match(/^.+\(\d\)$/gm)) {input.value += ' (1)';}
-            else {
-                let tempstr = input.value.split('');
-                tempstr[input.value.length - 2] = `${Number(input.value.charAt(input.value.length - 2)) + 1}`;
-                input.value = tempstr.join('');
+        try {
+            input.value.trim();
+            if (fs.existsSync(path.join(window.kade.cpath, input.value))) {
+                if (!input.value.match(/^.+\(\d\)$/gm)) {input.value += ' (1)';}
+                else {
+                    let tempstr = input.value.split('');
+                    tempstr[input.value.length - 2] = `${Number(input.value.charAt(input.value.length - 2)) + 1}`;
+                    input.value = tempstr.join('');
+                }
+                return;
             }
-            return;
+            fs.mkdirSync(path.join(window.kade.cpath, input.value));
+            lightRefresh();
+            modal.remove();
+            postModal(modal.id);
+        } catch {
+            clearModals();
+            showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");
         }
-        fs.mkdirSync(path.join(window.kade.cpath, input.value));
-        lightRefresh();
-        modal.remove();
     };
     cont.appendChild(conf);
 }

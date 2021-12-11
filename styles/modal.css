@@ -9,6 +9,8 @@
     border: 1px solid #af2188a4;
     background-color: #171717da;
     padding: 6px 8px;
+    z-index: 3;
+    max-width: 60%;
 }
 
 .modal h1, .modal h2, .modal h3, .modal h4 {
@@ -47,3 +49,13 @@
 }
 
 .modal .button-container, input, .modal .button-container, button {display: inline-block;}
+
+#modal-block {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #1717176d;
+    z-index: 2;
+}
