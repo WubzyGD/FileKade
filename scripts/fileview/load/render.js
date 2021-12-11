@@ -70,4 +70,8 @@ module.exports = (dir, options) => {
     }
 
     if (options.resetNav) {loadHierarchy();}
+    if (!options.scroll && window.kade.scrollY) {
+        window.scrollTo(0, window.kade.scrollY);
+        window.kade.scrollY = 0;
+    }
 };

@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if (window.kade.context) {hideContext(window);}
     }
 
-    window.kade.refreshInterval = setInterval(lightRefresh, 60000);
+    window.kade.refreshInterval = setInterval(() => {if (!window.kade.modal) {lightRefresh();}}, 60000);
     window.kade.checkDirInterval = setInterval(checkDir, 5000);
 
     require('../keybinds/handleKey')();
