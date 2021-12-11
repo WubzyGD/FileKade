@@ -1,5 +1,10 @@
 {
-    "ctrl+r": "reload",
-    "command+r": "reload",
-    "ctrl+shift+i": "devtool"
+    "process": {
+        "ctrl+r": "reload",
+        "command+r": "reload",
+        "ctrl+shift+i": "devtool"
+    },
+    "renderer": {
+        "ctrl+n": "newfolder"
+    }
 }

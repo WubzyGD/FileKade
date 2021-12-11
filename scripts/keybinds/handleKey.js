@@ -8,7 +8,14 @@ module.exports = () => {
         ipc.sendSync('keybind', message);
     };
 
-    Object.keys(binds).forEach((bind) => {
-        mousetrap.bind(bind, () => sendIpcMessage(binds[bind]));
+    const process = binds.process;
+    const renderer = binds.renderer;
+
+    Object.keys(process).forEach((bind) => {
+        mousetrap.bind(bind, () => sendIpcMessage(process[bind]));
+    });
+
+    Object.keys(renderer).forEach((bind) => {
+        mousetrap.bind(bind, require(`./renderer/${renderer[bind]}`));
     });
 };
