@@ -11,11 +11,11 @@
 
 #toast-container {
     position: fixed;
-    top: 10px;
+    top: 34px;
     right: 10px;
     display: flex;
     flex-direction: column-reverse;
-    align-items: stretch;
+    align-items: flex-end;
     align-content: stretch;
     row-gap: 4px;
     justify-content: flex-end;
@@ -24,11 +24,19 @@
 
 .toast {
     border-radius: 5px;
-    background-color: #a172a6;
+    background-color: #a172a6c2;
     color: white;
     animation: enter-toast .25s ease-out 1;
     animation-fill-mode: both;
-    animation-delay: 2s;
+    padding: 4px 6px;
+    border-color: #a172a6c2;
+    border-style: solid;
+    border-width: 1px;
+    transition: border-color .15s ease-in, background-color .15s ease-in;
+    max-width: 350px;
+}
+.toast:hover {
+    border-color: white;
 }
 
 .toast p {
@@ -37,7 +45,7 @@
 }
 
 .toast h2 {
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Nunito', sans-serif;
-    margin: 6px 0 8px 8px;
+    margin: 6px 0 2px 8px;
 }
