@@ -24,14 +24,14 @@ module.exports = () => {
     clw.className = 'changelog-wrapper';
     modal.appendChild(clw);
 
-    changelogs.forEach(changelog => {
+    changelogs.reverse().forEach(changelog => {
         changelog = require(`../../json/changelogs/${changelog}`);
         let w = document.createElement('div');
         w.className = 'changelog-version-container';
         clw.appendChild(w);
         let subtitle = document.createElement('h2');
         subtitle.className = 'subtitle';
-        subtitle.innerHTML = changelog.version.name + ' ' + changelog.version.semver + (window.kade.version.name === changelog.version.name ? ' (Current)' : '');
+        subtitle.innerHTML = `${changelog.version.name} ${changelog.version.semver}${window.kade.version.semver === changelog.version.semver ? ' (Current)' : ''}`;
         w.appendChild(subtitle);
         let cl = changelog.log;
         Object.keys(cl).forEach(group => {

@@ -112,3 +112,17 @@
 .close-button:hover:before, .close-button:hover:after {
     transform: rotate(180deg);
 }
+
+.changelog-wrapper {
+    display: flex;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: flex-start;
+    overflow: auto;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+
+#changelog-modal {max-height: 70vh;}

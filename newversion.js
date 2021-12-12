@@ -33,10 +33,17 @@ const ask = async () => {
 
     await input("I've made the changelog for you! Press enter when you're ready to create the release tag.");
 
-    cp.exec(`npm version ${v.trim().toLowerCase()}`, function(error, stdout, stderr) {
-        if (error) {console.error(error);}
-        if (stdout) {console.log(stdout);}
-        if (stdout) {console.log(stderr);}
+    let msg = await input('What would you like the commit message to be? ');
+
+    console.log('');
+
+    cp.exec('git add .', () => {
+        console.log('Staged working directory.\n');
+        cp.exec(`npm version ${v.trim().toLowerCase()} -m %s -> ${msg}`, function(error, stdout, stderr) {
+            if (error) {console.error(error);}
+            if (stdout) {console.log(stdout);}
+            if (stdout) {console.log(stderr);}
+        });
     });
 
     console.log('\nDone!');
