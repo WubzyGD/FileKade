@@ -38,6 +38,7 @@ module.exports = () => {
     conf.onclick = () => {
         try {
             input.value.trim();
+            if (!input.value.length) {return;}
             if (fs.existsSync(path.join(window.kade.cpath, input.value))) {
                 if (!input.value.match(/^.+\(\d\)$/gm)) {input.value += ' (1)';}
                 else {
