@@ -8,6 +8,16 @@
         transform: translateX(0);
     }
 }
+@keyframes leave-toast {
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    from {
+        opacity: 100;
+        transform: translateX(0);
+    }
+}
 
 #toast-container {
     position: fixed;
@@ -37,6 +47,16 @@
 }
 .toast:hover {
     border-color: white;
+}
+
+.toast-entering {
+    animation: enter-toast .25s ease-out 1;
+    animation-fill-mode: both;
+}
+
+.toast-leaving {
+    animation: leave-toast .25s ease-out 1;
+    animation-fill-mode: both;
 }
 
 .toast p {

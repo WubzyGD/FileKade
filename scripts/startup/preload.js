@@ -1,9 +1,11 @@
 const os = require('os');
+const moment = require('../dep/moment');
 
 const setButtons = require('./setbuttons');
 const hideContext = require('../contextmenu/hidecontext');
 const lightRefresh = require('../fileview/lightrefresh');
 const checkDir = require('../fileview/checkdir');
+const createToast = require('../toast/createtoast');
 
 window.addEventListener('DOMContentLoaded', () => {
     window.kade = {
@@ -38,6 +40,9 @@ window.addEventListener('DOMContentLoaded', () => {
     window.kade.checkDirInterval = setInterval(checkDir, 5000);
 
     require('../keybinds/handleKey')();
+
+    setTimeout(() => {createToast("Welcome", [`Today is ${moment().format('MMMM Do, YYYY')}`, `The time is ${moment().format('h:mma')}`], '#5d60ca', false, 10);}, 1000);
+    setTimeout(() => {createToast("Welcome", ["Welcome to FileKade!", "App by WubzyGD", "Alpha/Pre-release Build"], '#5d60ca', false, 10);}, 1300);
 });
 
 window.addEventListener('contextmenu', e => {
