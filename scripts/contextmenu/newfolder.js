@@ -7,6 +7,7 @@ const preModal = require('../modal/pre');
 const postModal = require('../modal/post');
 const showError = require('../modal/common/error');
 const clearModals = require('../modal/clearmodals');
+const newToast = require('../toast/createtoast');
 
 module.exports = () => {
     if (window.kade.modal) {console.log('hboonk'); return;}
@@ -54,11 +55,12 @@ module.exports = () => {
             fs.mkdirSync(path.join(window.kade.cpath, input.value));
             lightRefresh();
             modalOut.remove();
-            postModal(modalOut.id);
+            newToast("Folder created", [`Folder "${input.value}" created successfully`, `<em>${window.kade.cpath}\\${input.value}</em>`]);
         } catch {
+            newToast("Folder not Created", "An error caused that folder to not be created.", "#b24355", false, 5, () => {showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
             clearModals();
-            showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");
         }
+        postModal(modalOut.id);
     };
     cont.appendChild(conf);
     input.focus();
