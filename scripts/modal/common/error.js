@@ -5,6 +5,7 @@ module.exports = (name, text, after = () => {}) => {
     preModal('error-modal');
     let modal = document.createElement('div');
     modal.className = 'modal';
+    modal.classList.add('error-modal');
     modal.id = 'error-modal';
     document.body.appendChild(modal);
     let title = document.createElement('h2');
