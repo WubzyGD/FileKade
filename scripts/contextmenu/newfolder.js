@@ -11,10 +11,13 @@ const clearModals = require('../modal/clearmodals');
 module.exports = () => {
     if (window.kade.modal) {console.log('hboonk'); return;}
     preModal('new-folder-modal-container');
+    let modalOut = document.createElement('div');
+    modalOut.className = 'modal';
+    modalOut.id = 'new-folder-modal-container';
+    document.body.appendChild(modalOut);
     let modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.id = 'new-folder-modal-container';
-    document.body.appendChild(modal);
+    modal.className = 'modal-wrapper';
+    modalOut.appendChild(modal);
     let title = document.createElement('h2');
     title.innerHTML = 'New Folder';
     modal.appendChild(title);
@@ -50,8 +53,8 @@ module.exports = () => {
             }
             fs.mkdirSync(path.join(window.kade.cpath, input.value));
             lightRefresh();
-            modal.remove();
-            postModal(modal.id);
+            modalOut.remove();
+            postModal(modalOut.id);
         } catch {
             clearModals();
             showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");
@@ -62,8 +65,19 @@ module.exports = () => {
     let msm = new mousetrap(modal);
     msm.bind('esc', () => {
         lightRefresh();
-        modal.remove();
-        postModal(modal.id);
+        modalOut.remove();
+        postModal(modalOut.id);
     });
     msm.bind('enter', () => {conf.click();});
+    let close = document.createElement('a');
+    close.className = 'close-button';
+    close.onclick = () => {
+        lightRefresh();
+        modalOut.remove();
+        postModal(modalOut.id);
+    };
+    let closeWrap = document.createElement('div');
+    closeWrap.className = 'close-button-wrapper';
+    modal.appendChild(closeWrap);
+    closeWrap.appendChild(close);
 }

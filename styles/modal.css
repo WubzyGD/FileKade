@@ -60,3 +60,45 @@
     z-index: 2;
 }
 
+.modal-wrapper {
+    margin: 0 0;
+    padding: 0 0;
+    position: relative;
+}
+
+.close-button-wrapper {
+    margin: 0 0;
+    padding: 0 0;
+    top: 0;
+    right: 10px;
+    position: absolute;
+}
+
+.close-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    left: 10px;
+    bottom: 10px;
+    display: block;
+    z-index: 200;
+    position: relative;
+}
+.close-button:before, .close-button:after {
+    content: '';
+    width: 55%;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    top: 48%;
+    left: 22%;
+    transform: rotate(-45deg);
+    transition: all 0.3s ease-out;
+}
+.close-button:after {
+    transform: rotate(45deg);
+    transition: all 0.3s ease-out;
+}
+.close-button:hover:before, .close-button:hover:after {
+    transform: rotate(180deg);
+}
