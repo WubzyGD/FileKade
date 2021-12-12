@@ -8,8 +8,8 @@ async function createWindow () {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        minHeight: 400,
-        minWidth: 600,
+        minHeight: 600,
+        minWidth: 750,
         webPreferences: {
             preload: path.join(__dirname, 'scripts/startup/preload.js'),
             nodeIntegration: true,

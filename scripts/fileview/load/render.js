@@ -6,10 +6,10 @@ module.exports = (dir, options) => {
     const refresh = require("../refresh");
 
     let cdir = dir || window.kade.cdir;
+    const exp = document.getElementById('files');
     let num = 0;
     for (let i = 0; i < cdir.length; i++) {
         let file = cdir[i];
-        const exp = document.getElementById('files');
         let cfc = document.createElement("div");
         cfc.className = 'file';
         if (options.animate) {cfc.classList.add('rise');}
@@ -73,5 +73,13 @@ module.exports = (dir, options) => {
     if (!options.scroll && window.kade.scrollY) {
         window.scrollTo(0, window.kade.scrollY);
         window.kade.scrollY = 0;
+    }
+
+    if (!cdir.length) {
+        let nts = document.createElement('p');
+        nts.id = 'nothing-to-show';
+        nts.innerHTML = "There's nothing to show here!<br>But you can look at this really pretty box :)<br><br><em>The folder is empty, or I don't have the permissions to show you your files.</em>";
+        nts.className = 'nosel';
+        exp.appendChild(nts);
     }
 };

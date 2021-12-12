@@ -99,3 +99,41 @@
     width: 27%;
     height: 100%;
 }
+
+#nothing-to-show {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #afafaf;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    padding: 15px;
+    --angle: 0deg;
+    border: 4px solid;
+    border-image: linear-gradient(var(--angle), rgb(92, 18, 72) 20%, rgb(60, 62, 131) 60%, rgb(92, 18, 72) 100%) 1;
+    animation: 10s rotate linear infinite, moving-stripes 10s linear infinite;
+    background-image: repeating-linear-gradient(-45deg, #a172a64f, #afafaf19 30px);
+    background-size: 200%;
+}
+
+@media only screen and (max-width: 900px) {
+    #nothing-to-show {font-size: 16px;}
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@keyframes moving-stripes {
+    100% {background-position: 100% 100%;}
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
