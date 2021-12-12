@@ -1,3 +1,5 @@
+const removeToast = require('./removetoast');
+
 module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, onclick = () => {}, selectable = false) => {
     if (!name || !text) {return;}
     if (!Array.isArray(text)) {text = [text];}
@@ -5,10 +7,15 @@ module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, 
     toast.className = 'toast';
     toast.style.backgroundColor = `${bg}c2`;
     toast.style.borderColor = `${bg}c2`;
+    toast.classList.add('toast-entering');
     toast.onmouseenter = () => {toast.style.backgroundColor = bg;};
     toast.onmouseleave = () => {toast.style.backgroundColor = `${bg}c2`;};
+    let continueTimeout = true;
     toast.onclick = () => {
-        if (!persistOnClick) {}
+        if (!persistOnClick) {
+            removeToast(toast);
+            continueTimeout = false;
+        }
         onclick();
     };
     document.getElementById('toast-container').appendChild(toast);
@@ -25,4 +32,5 @@ module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, 
         }
         else {toast.appendChild(document.createElement('br'));}
     }
+    setTimeout(() => {if (continueTimeout) {removeToast(toast);}}, time * 1000);
 };
