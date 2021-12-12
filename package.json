@@ -1,15 +1,16 @@
 {
-  "name": "filekade",
-  "version": "1.0.0",
-  "description": "A file explorer (primarily a learning experience for me)",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron ."
-  },
-  "author": "WubzyGD",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^4.1.2",
-    "electron": "^16.0.1"
-  }
+    "name": "filekade",
+    "version": "1.3.7",
+    "description": "A file explorer (primarily a learning experience for me)",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "nv": "node newversion.js"
+    },
+    "author": "WubzyGD",
+    "license": "ISC",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "electron": "^16.0.1"
+    }
 }
