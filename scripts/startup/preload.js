@@ -17,7 +17,11 @@ window.addEventListener('DOMContentLoaded', () => {
         chdir: [],
         ctxFunc: {},
         modals: [],
-        modal: false
+        modal: false,
+        version: {
+            name: "Alpha",
+            semver: require('../../package.json').version
+        }
     };
 
     const startDir = `${os.homedir}\\Desktop`;
@@ -41,8 +45,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     require('../keybinds/handleKey')();
 
-    setTimeout(() => {createToast("Welcome", [`Today is ${moment().format('MMMM Do, YYYY')}`, `The time is ${moment().format('h:mma')}`], '#5d60ca', false, 10);}, 1000);
-    setTimeout(() => {createToast("Welcome", ["Welcome to FileKade!", "App by WubzyGD", "Alpha/Pre-release Build"], '#5d60ca', false, 10);}, 1300);
+    setTimeout(() => {createToast("Welcome", ["Welcome to FileKade!", "App by WubzyGD", "Alpha/Pre-release Build"], '#5d60ca', false, 20);}, 1600);
+    setTimeout(() => {createToast("Welcome", [`Today is ${moment().format('MMMM Do, YYYY')}`, `The time is ${moment().format('h:mma')}`], '#5d60ca', false, 20);}, 1300);
+    setTimeout(() => {createToast("Recent Changes", "Click to view changelog", '#5d60ca', false, 10, () => {require('./changelog')();});}, 1000);
+
+    document.getElementById('title').innerHTML = `FileKade - ${window.kade.version.name} ${window.kade.version.semver}`;
 });
 
 window.addEventListener('contextmenu', e => {

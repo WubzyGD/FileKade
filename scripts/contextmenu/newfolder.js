@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const mousetrap = require('../dep/mousetrap');
+const Mousetrap = require('../dep/mousetrap');
 
 const lightRefresh = require('../fileview/lightrefresh');
 const preModal = require('../modal/pre');
@@ -10,7 +10,7 @@ const clearModals = require('../modal/clearmodals');
 const newToast = require('../toast/createtoast');
 
 module.exports = () => {
-    if (window.kade.modal) {console.log('hboonk'); return;}
+    if (window.kade.modal) {return;}
     preModal('new-folder-modal-container');
     let modalOut = document.createElement('div');
     modalOut.className = 'modal';
@@ -64,7 +64,7 @@ module.exports = () => {
     };
     cont.appendChild(conf);
     input.focus();
-    let msm = new mousetrap(modal);
+    let msm = new Mousetrap(modal);
     msm.bind('esc', () => {
         lightRefresh();
         modalOut.remove();

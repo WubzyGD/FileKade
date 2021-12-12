@@ -1,0 +1,16 @@
+{
+    "log": {
+        "Changelogs": [
+            "Added this changelog!",
+            "Dynamically displays changelog information from multiple versions"
+        ],
+        "Dev stuff": [
+            "Added a tool to create changelogs for me!",
+            "I'm really lazy :)"
+        ]
+    },
+    "version": {
+        "name": "Alpha",
+        "semver": "1.3.7"
+    }
+}
