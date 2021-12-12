@@ -39,7 +39,7 @@ const ask = async () => {
 
     cp.exec('git add .', () => {
         console.log('Staged working directory.\n');
-        cp.exec(`npm version ${v.trim().toLowerCase()} -m %s -> ${msg}`, function(error, stdout, stderr) {
+        cp.exec(`npm version ${v.trim().toLowerCase()} -m "%s -> ${msg}"`, function(error, stdout, stderr) {
             if (error) {console.error(error);}
             if (stdout) {console.log(stdout);}
             if (stdout) {console.log(stderr);}
