@@ -1,16 +1,53 @@
 {
-    "name": "filekade",
-    "version": "1.4.0",
-    "description": "A file explorer (primarily a learning experience for me)",
-    "main": "main.js",
-    "scripts": {
-        "start": "electron .",
-        "nv": "node newversion.js"
-    },
-    "author": "WubzyGD",
-    "license": "ISC",
-    "dependencies": {
-        "chalk": "^4.1.2",
-        "electron": "^16.0.1"
+  "name": "filekade",
+  "version": "1.4.0",
+  "description": "A file explorer (primarily a learning experience for me)",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "nv": "node newversion.js",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "WubzyGD",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-deb": "^6.0.0-beta.61",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "electron": "16.0.4"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "filekade"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
     }
+  }
 }
