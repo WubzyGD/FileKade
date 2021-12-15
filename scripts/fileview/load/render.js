@@ -15,7 +15,7 @@ module.exports = (dir, options) => {
         if (options.animate) {cfc.classList.add('rise');}
         cfc.onclick = function () {
             window.kade.elc = true;
-            if (cfc.classList.contains('file-active')) {if (file.dir) {refresh(`${window.kade.cpath}\\${file.name}`);}}
+            if (cfc.classList.contains('file-active')) {if (file.dir) {refresh(`${window.kade.cpath}/${file.name}`);}}
             cfc.classList.add('file-active');
             if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
             window.kade.cl = cfc;

@@ -57,9 +57,9 @@ module.exports = () => {
             lightRefresh();
             modalOut.remove();
             newToast(
-                "Folder created", [`Folder "${input.value}" created successfully`, `<em>${window.kade.cpath}\\${input.value}</em>`], undefined, false, 5,
+                "Folder created", [`Folder "${input.value}" created successfully`, `<em>${window.kade.cpath}/${input.value}</em>`], undefined, false, 5,
                 () => {
-                    refresh(`${window.kade.cpath}\\${input.value}`);
+                    refresh(`${window.kade.cpath}/${input.value}`);
                     require('electron').clipboard.writeText(`${window.kade.cpath}`);
                     newToast("Copied!", "<em>The folder's path has been copied to your clipboard.</em>", "#19df46");
                 }

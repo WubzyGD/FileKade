@@ -22,10 +22,22 @@ window.addEventListener('DOMContentLoaded', () => {
         version: {
             name: "Alpha",
             semver: require('../../package.json').version
-        }
+        },
+        platform: undefined
     };
 
-    const startDir = `${os.homedir}\\Desktop`;
+    const platform = ipcRenderer.sendSync('preload', 'request-platform');
+    window.kade.platform = platform;
+
+    let startDir
+    switch (platform) {
+        case 'win32':
+            startDir = `${os.homedir}\\Desktop`;
+            break;
+        case 'linux':
+            startDir = `/home`;
+            break;
+    }
 
     require('./initcontext')();
 
