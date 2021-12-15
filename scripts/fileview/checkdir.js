@@ -6,6 +6,7 @@ const sort = require('./load/sort');
 const lightRefresh = require("./lightrefresh");
 const refresh = require('../fileview/refresh');
 const newToast = require("../toast/createtoast");
+const hideContext = require('../contextmenu/hidecontext');
 
 module.exports = () => {
     if (!window.kade.cpath.length) {return;}
@@ -24,5 +25,7 @@ module.exports = () => {
     if (JSON.stringify(window.kade.cdir) !== JSON.stringify(window.kade.chdir)) {
         //console.log('Detected directory updates.', JSON.stringify(window.kade.cdir), JSON.stringify(window.kade.chdir));
         lightRefresh();
+        newToast('External Directory Change', "Looks like the folder you're viewing was changed outside of this app. I've refreshed for you though <3", undefined, undefined, 10);
+        hideContext();
     }
 };
