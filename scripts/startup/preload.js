@@ -1,5 +1,6 @@
 const os = require('os');
 const moment = require('../dep/moment');
+const {ipcRenderer} = require('electron');
 
 const setButtons = require('./setbuttons');
 const hideContext = require('../contextmenu/hidecontext');
