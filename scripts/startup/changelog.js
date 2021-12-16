@@ -20,9 +20,13 @@ module.exports = () => {
     title.innerHTML = 'FileKade - Changelog';
     modal.appendChild(title);
 
+    let clww = document.createElement('div');
+    clww.className = 'changelog-anchor';
+    modal.appendChild(clww);
+
     let clw = document.createElement('div');
     clw.className = 'changelog-wrapper';
-    modal.appendChild(clw);
+    clww.appendChild(clw);
 
     changelogs.reverse().forEach(changelog => {
         changelog = require(`../../json/changelogs/${changelog}`);
@@ -53,6 +57,11 @@ module.exports = () => {
             });
         });
     });
+
+    clww.style = `height: ${modalOut.clientHeight - 6};`; // TODO cry enough tears that they magically make this line work
+    console.log(clww.style.height);
+    console.log(modalOut.clientHeight - 6);
+    console.log(typeof clww.style);
 
     let msm = new Mousetrap(modal);
     msm.bind('esc', () => {
