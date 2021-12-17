@@ -16,7 +16,7 @@ const ask = async () => {
             cl[gn] = [];
             const addItem = async () => {
                 let item = await input("Add an item: ");
-                if (item.trim().toLowerCase() !== "done") {
+                if (!['done', ''].includes(item.trim().toLowerCase())) {
                     cl[gn].push(item);
                     await addItem();
                 }
@@ -39,7 +39,7 @@ const ask = async () => {
 
     cp.exec('git add .', () => {
         console.log('Staged working directory.\n');
-        cp.exec(`npm version ${v.trim().toLowerCase()} -m "%s -> ${msg}"`, function(error, stdout, stderr) {
+        cp.exec(`npm version ${v.trim().toLowerCase()} -f -m "%s -> ${msg}"`, function(error, stdout, stderr) {
             if (error) {console.error(error);}
             if (stdout) {console.log(stdout);}
             if (stdout) {console.log(stderr);}
