@@ -22,7 +22,7 @@
 #toast-container {
     position: fixed;
     top: 34px;
-    right: 10px;
+    right: 15px;
     display: flex;
     flex-direction: column-reverse;
     align-items: flex-end;

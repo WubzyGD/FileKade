@@ -10,6 +10,8 @@ body {
     background-attachment: fixed;
     color: #d3d3d3;
     font-family: 'Montserrat', sans-serif;
+    overflow-y: overlay;
+    width: calc(100vw) - 10px;
 }
 
 .rise {
@@ -31,7 +33,7 @@ body {
     font-family: 'Nunito', sans-serif;
     margin: 0 0;
     z-index: 1;
-    animation:  shine 5s linear infinite;
+    animation: shine 5s linear infinite;
     background: linear-gradient(to right, #5d60ca 20%, #171717 35%, #171717 35%, #5d60ca 50%, #5d60ca 50%, #af2188 75%, #5d60ca 90%);
     background-size: 200% auto;
     color: #5d60ca;
@@ -58,3 +60,21 @@ body {
 }
 
 .nosel {-webkit-user-select: none;}
+
+
+::-webkit-scrollbar-track {
+  background-color: #00000000;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #00000000;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom, #af2188c5 0%, #af2188c5 10%, #fa59cfc5 75%, #fa59cfc5 100%);
+}
+
+::-webkit-scrollbar-thumb:hover {background-image: linear-gradient(to bottom, #af2188ff 0%, #af2188ff 10%, #fa59cfff 75%, #fa59cfff 100%);}
