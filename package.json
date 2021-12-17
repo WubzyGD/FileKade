@@ -1,13 +1,15 @@
 {
   "name": "filekade",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A file explorer (primarily a learning experience for me)",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "nv": "node newversion.js",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "version": "git add .",
+    "postversion": "git push && git push --tags"
   },
   "author": "WubzyGD",
   "license": "ISC",
