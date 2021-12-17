@@ -74,6 +74,8 @@
     margin: 0 0;
     padding: 0 0;
     position: relative;
+    max-height: inherit;
+    height: inherit;
 }
 
 .close-button-wrapper {
@@ -118,11 +120,19 @@
     align-items: stretch;
     align-content: stretch;
     justify-content: flex-start;
-    overflow: auto;
     flex-direction: column;
     row-gap: 8px;
     margin-top: 6px;
     margin-left: 6px;
+    position: static;
+    max-height: inherit;
+    overflow-y: scroll;
+}
+
+.changelog-anchor {
+    position: static;
+    max-height: 62vh;
+    overflow: hidden;
 }
 
 #changelog-modal {max-height: 70vh;}

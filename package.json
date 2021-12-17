@@ -4,7 +4,7 @@
   "description": "A file explorer (primarily a learning experience for me)",
   "main": "main.js",
   "scripts": {
-    "start": "electron-forge start",
+    "start": "electron .",
     "nv": "node newversion.js",
     "package": "electron-forge package",
     "make": "electron-forge make"
@@ -31,7 +31,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "filekade"
+            "name": "FileKade"
           }
         },
         {
