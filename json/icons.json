@@ -17,7 +17,11 @@
         "js": "javascript",
         "xlsx": "excel",
         "xls": "excel",
-        "gitignore": "git"
+        "gitignore": "git",
+        "7z": "zip",
+        "jar": "java",
+        "der": "certificate",
+        "py": "python"
     },
     "folder": {
 

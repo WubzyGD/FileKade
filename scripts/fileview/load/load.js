@@ -17,7 +17,7 @@ module.exports = (check=false) => {
         let ofile = {};
         ofile.icon = fileIcon(`${dir}/${file}`, file);
         ofile.name = trimext.includes(path.extname(file)) ? file.slice(0, file.length - path.extname(file).length) : file;
-        try {ofile.type = fs.lstatSync(`${dir}/${file}`).isDirectory() ? "File Folder" : (extensions[path.extname(file).slice(1)] || "File");}
+        try {ofile.type = fs.lstatSync(`${dir}/${file}`).isDirectory() ? "File Folder" : (extensions[(file.startsWith('.') ? file : path.extname(file)).slice(1)] || "File");}
         catch {ofile.type = `${path.extname(file)} File`.trim();}
         try {ofile.lastModified = new Date(fs.lstatSync(`${dir}/${file}`).mtimeMs);}
         catch {ofile.lastModified = 0;}
