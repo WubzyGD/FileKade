@@ -1,6 +1,6 @@
 const removeToast = require('./removetoast');
 
-module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, onclick = () => {}, selectable = false) => {
+module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, onclick = () => {}, selectable = false, timerColor='#ddddddb2') => {
     if (!name || !text) {return;}
     if (!Array.isArray(text)) {text = [text];}
     let toast = document.createElement('div');
@@ -10,6 +10,8 @@ module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, 
     toast.classList.add('toast-entering');
     toast.onmouseenter = () => {toast.style.backgroundColor = bg;};
     toast.onmouseleave = () => {toast.style.backgroundColor = `${bg}c2`;};
+    let toastWrap = document.createElement('div');
+    toastWrap.className = 'toast-wrapper';
     let continueTimeout = true;
     toast.onclick = () => {
         if (!persistOnClick) {
@@ -19,18 +21,26 @@ module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, 
         onclick();
     };
     document.getElementById('toast-container').appendChild(toast);
+    toast.appendChild(toastWrap);
     let h2 = document.createElement('h2');
     h2.innerHTML = name;
     if (!selectable) {h2.className = 'nosel';}
-    toast.appendChild(h2);
+    toastWrap.appendChild(h2);
     for (let i = 0; i < text.length; i++) {
         if (text[i].length) {
             let p = document.createElement('p');
             p.innerHTML = text[i];
             if (!selectable) {p.className = 'nosel';}
-            toast.appendChild(p);
+            toastWrap.appendChild(p);
         }
-        else {toast.appendChild(document.createElement('br'));}
+        else {toastWrap.appendChild(document.createElement('br'));}
     }
+    let timer = document.createElement('div');
+    timer.className = 'toast-timer';
+    timer.style.backgroundColor = timerColor;
+    timer.style.animation = `toast-timer ${time}s linear`;
+    toastWrap.appendChild(timer);
+    //toast.onmouseenter = () => {timer.style.animationPlayState = 'paused';};
+    //toast.onmouseleave = () => {timer.style.animationPlayState = 'normal';};
     setTimeout(() => {if (continueTimeout) {removeToast(toast);}}, time * 1000);
 };
