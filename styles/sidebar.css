@@ -1,0 +1,17 @@
+#sidebar {
+    width: 10%;
+    border-right: 1px solid #5d60caaf;
+    margin: 0 0;
+    padding: 12px 14px;
+}
+
+#container {
+    flex-basis: 90%;
+}
+
+#master {
+    display: flex;
+    align-items: stretch;
+    align-content: flex-start;
+    justify-content: stretch;
+}
