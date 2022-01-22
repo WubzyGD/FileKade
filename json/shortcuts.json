@@ -1,10 +1,14 @@
 {
     "process": {
-        "ctrl+r": "reload",
+        "ctrl+shift+r": "reload",
         "command+r": "reload",
         "ctrl+shift+i": "devtool"
     },
     "renderer": {
-        "ctrl+n": "newfolder"
+        "ctrl+n": "newfolder",
+        "ctrl+r": "refresh",
+        "alt+a": "changeascend",
+        "alt+s": "changesort",
+        "alt+t": "changesort"
     }
 }
