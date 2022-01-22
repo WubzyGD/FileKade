@@ -1,0 +1,1 @@
+{"log":{"Keybinds":["Ctrl+R: Now does a refresh instead of reload","Ctrl+Shift+R: Does a hard reload instead","Alt+A: Switches between ascending and descending","Alt+S or Alt+T: Changes sorting type"]},"version":{"name":"Alpha","semver":"1.4.3"}}
