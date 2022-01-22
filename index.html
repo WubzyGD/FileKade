@@ -10,6 +10,7 @@
         <link href='./styles/context.css' rel='stylesheet'>
         <link href='./styles/modal.css' rel='stylesheet'>
         <link href="./styles/toast.css" rel="stylesheet">
+        <link href="./styles/sidebar.css" rel="stylesheet">
 
         <title>FileKade</title>
     </head>
@@ -20,18 +21,28 @@
             </div>
         </div>
 
-        <div id='container'>
-            <div id='controls' class='controls'>
-                <div id='header-buttons'></div>
-                <div id='header-nav'></div>
+        <div id="master">
+            <div id="sidebar">
+                <div id="favorites">
+                    <div>
+                        <h2 class="nosel">Quick Access</h2>
+                    </div>
+                    <div id="favorites-container"></div>
+                </div>
             </div>
-            <div id='files' class='files'>
-                <div id='file-header' class='file-header'>
-                    <p></p>
-                    <p>Name</p>
-                    <p>Type</p>
-                    <p>Last Modified</p>
-                    <p>Size</p>
+            <div id='container'>
+                <div id='controls' class='controls'>
+                    <div id='header-buttons'></div>
+                    <div id='header-nav'></div>
+                </div>
+                <div id='files' class='files'>
+                    <div id='file-header' class='file-header'>
+                        <p></p>
+                        <p>Name</p>
+                        <p>Type</p>
+                        <p>Last Modified</p>
+                        <p>Size</p>
+                    </div>
                 </div>
             </div>
         </div>

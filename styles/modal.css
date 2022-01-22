@@ -9,7 +9,7 @@
     border: 1px solid #af2188a4;
     background-color: #171717da;
     padding: 6px 8px;
-    z-index: 3;
+    z-index: 4;
     max-width: 50%;
 }
 
@@ -65,7 +65,7 @@
     top: 0;
     left: 0;
     background-color: #1717176d;
-    z-index: 2;
+    z-index: 3;
 }
 
 .error-modal {max-width: 45%;}

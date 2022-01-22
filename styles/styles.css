@@ -11,7 +11,6 @@ body {
     color: #d3d3d3;
     font-family: 'Montserrat', sans-serif;
     overflow-y: overlay;
-    width: calc(100vw) - 10px;
 }
 
 .rise {
@@ -32,7 +31,7 @@ body {
 #title {
     font-family: 'Nunito', sans-serif;
     margin: 0 0;
-    z-index: 1;
+    z-index: 2;
     animation: shine 5s linear infinite;
     background: linear-gradient(to right, #5d60ca 20%, #171717 35%, #171717 35%, #5d60ca 50%, #5d60ca 50%, #af2188 75%, #5d60ca 90%);
     background-size: 200% auto;
@@ -55,7 +54,7 @@ body {
     width: 100vw;
     overflow: hidden;
     background-color: #0000006d;
-    z-index: 1;
+    z-index: 2;
     -webkit-app-region: drag;
 }
 

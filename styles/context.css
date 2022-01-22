@@ -7,6 +7,7 @@
     position: absolute;
     background-color: #101010df;
     padding: 7px 5px;
+    z-index: 2;
 }
 
 #ctx hr {

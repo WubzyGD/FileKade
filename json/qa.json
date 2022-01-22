@@ -1,0 +1,23 @@
+{
+    "default": [
+        {
+            "name": "Desktop",
+            "win32": "{r}\\Desktop"
+        }, {
+            "name": "Documents",
+            "win32": "{r}\\Documents"
+        }, {
+            "name": "Pictures",
+            "win32": "{r}\\Pictures"
+        }, {
+            "name": "Videos",
+            "win32": "{r}\\Videos"
+        }, {
+            "name": "Music",
+            "win32": "{r}\\Music"
+        }, {
+            "name": "Downloads",
+            "win32": "{r}\\Downloads"
+        }
+    ]
+}

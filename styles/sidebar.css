@@ -1,0 +1,38 @@
+#sidebar {
+    width: 180px;
+    border-right: 1px solid #5d60caaf;
+    margin: 26px 0 0 0;
+    padding: 0 14px 12px 14px;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    background-color: #0000006d;
+    height: 100%;
+}
+
+#container {margin-left: 200px;}
+
+#favorites-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: flex-start;
+    justify-content: flex-start;
+    row-gap: 6px;
+}
+
+.favorites-button {
+    padding: 4px 6px;
+    color: #afafaf;
+    border-radius: 3px 3px;
+    cursor: pointer;
+    transition: padding-left .05s linear;
+}
+
+.favorites-button:hover {
+    background-color: #a172a65f;
+    padding-left: 10px;
+    color: white;
+}
