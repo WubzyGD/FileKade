@@ -1,10 +1,11 @@
 const fs = require('fs');
 const Mousetrap = require('../dep/mousetrap');
+const path = require('path');
 
 const preModal = require('../modal/pre');
 const postModal = require('../modal/post');
 
-const changelogs = fs.readdirSync('./json/changelogs').filter(file => file.endsWith('.json'));
+const changelogs = fs.readdirSync(path.join(__dirname, '../../', '/json/changelogs')).filter(file => file.endsWith('.json'));
 
 module.exports = () => {
     if (window.kade.modal) {return;}
