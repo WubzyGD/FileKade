@@ -40,6 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     require('./initcontext')();
+    require('./initsidebar')();
 
     require('../fileview/refresh')(startDir);
     setButtons();
