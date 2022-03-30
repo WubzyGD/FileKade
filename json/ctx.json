@@ -10,5 +10,10 @@
         {"name": "Reload", "id": "ctx-reload", "onclick": "reload"},
         {"name": "Refresh", "id": "ctx-refresh", "onclick": "refresh"},
         {"name": "Options", "id": "ctx-options", "onclick": "options"}
+    ],
+    [
+        {"name": "Rename", "id": "ctx-rename-folder", "onclick": "rename-folder"},
+        {"name": "Pin to Favorites", "id": "ctx-pin", "onclick": "pin"},
+        {"name": "Delete", "id": "ctx-delete-folder", "onclick": "delete-folder"}
     ]
 ]

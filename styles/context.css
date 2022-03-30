@@ -34,3 +34,8 @@
     align-content: stretch;
     row-gap: 2px;
 }
+
+#ctx-folder {
+    padding: 0 0;
+    margin: 0 0;
+}

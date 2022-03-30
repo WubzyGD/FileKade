@@ -23,5 +23,6 @@ module.exports = () => {
             }
             if (i + 1 < ctxl.length) {ctx.appendChild(document.createElement('hr'));}
         }
+        document.getElementById('ctx-pin').parentElement.id = 'ctx-folder';
     } catch (e) {console.error(e);}
 };
