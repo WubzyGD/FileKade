@@ -12,26 +12,27 @@ const refresh = require('../fileview/refresh');
 
 module.exports = () => {
     if (window.kade.modal) {return;}
-    preModal('new-folder-modal-container');
+    preModal('rename-folder-modal-container');
     let modalOut = document.createElement('div');
     modalOut.className = 'modal';
-    modalOut.id = 'new-folder-modal-container';
+    modalOut.id = 'rename-folder-modal-container';
     document.body.appendChild(modalOut);
     let modal = document.createElement('div');
     modal.className = 'modal-wrapper';
     modalOut.appendChild(modal);
     let title = document.createElement('h2');
-    title.innerHTML = 'New Folder';
+    title.innerHTML = 'Rename Folder';
     modal.appendChild(title);
     let text = document.createElement('p');
-    text.innerHTML = "Please name your new folder.";
+    text.innerHTML = "What would you like to rename this folder to?";
     modal.appendChild(text);
     let cont = document.createElement('div');
     cont.className = 'button-container';
     modal.appendChild(cont);
     let input = document.createElement('input');
-    input.placeholder = 'New Folder';
-    input.id = 'new-folder-input';
+    input.placeholder = window.kade.currentFolder;
+    input.id = 'rename-folder-input';
+    input.value = window.kade.currentFolder;
     let lastIn = '';
     input.oninput = () => {
         if (!input.value.match(/^[a-zA-Z0-9-_() ]*$/gm)) {input.value = lastIn;}
@@ -39,7 +40,7 @@ module.exports = () => {
     };
     cont.appendChild(input);
     let conf = document.createElement('button');
-    conf.innerHTML = 'Create';
+    conf.innerHTML = 'Rename';
     conf.onclick = () => {
         try {
             input.value.trim();
@@ -53,11 +54,11 @@ module.exports = () => {
                 }
                 return;
             }
-            fs.mkdirSync(path.join(window.kade.cpath, input.value));
+            fs.renameSync(path.join(window.kade.cpath, window.kade.currentFolder), path.join(window.kade.cpath, input.value));
             lightRefresh();
             modalOut.remove();
             newToast(
-                "Folder created", [`Folder "${input.value}" created successfully`, `<em>${window.kade.cpath}/${input.value}</em>`], undefined, false, 5,
+                "Folder renamed", [`Folder "${window.kade.currentFolder}" was successfully renamed to "${input.value}"`, `<em>${window.kade.cpath}/${input.value}</em>`], undefined, false, 5,
                 () => {
                     refresh(`${window.kade.cpath}/${input.value}`);
                     require('electron').clipboard.writeText(`${window.kade.cpath}`);
@@ -65,7 +66,7 @@ module.exports = () => {
                 }
             );
         } catch {
-            newToast("Folder not Created", "An error caused that folder to not be created.", "#b24355", false, 5, () => {showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
+            newToast("Folder not Renamed", "An error caused that folder to not be renamed.", "#b24355", false, 5, () => {showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
             clearModals();
         }
         postModal(modalOut.id);
