@@ -60,9 +60,6 @@ module.exports = () => {
     });
 
     clww.style = `height: ${modalOut.clientHeight - 6};`; // TODO cry enough tears that they magically make this line work
-    console.log(clww.style.height);
-    console.log(modalOut.clientHeight - 6);
-    console.log(typeof clww.style);
 
     let msm = new Mousetrap(modal);
     msm.bind('esc', () => {
