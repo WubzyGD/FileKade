@@ -7,8 +7,8 @@ module.exports = (e, target, window) => {
     if (target.classList.contains('file') || (target.parentElement && target.parentElement.classList.contains('file'))) {
         ctxf.style.display = 'block';
         ctxf.previousElementSibling.style.display = 'block';
-        if (target.classList.contains('file')) {window.kade.currentFolder = target.children[1].innerHTML;}
-        else {window.kade.currentFolder = target.parentElement.children[1].innerHTML;}
+        if (target.classList.contains('file')) {window.kade.currentFolder = target.children[1].innerHTML.trim();}
+        else {window.kade.currentFolder = target.parentElement.children[1].innerHTML.trim();}
     } else {
         ctxf.style.display = 'none';
         ctxf.previousElementSibling.style.display = 'none';

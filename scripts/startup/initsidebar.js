@@ -2,6 +2,8 @@ const refresh = require('../fileview/refresh');
 
 const qa = require('../../json/qa.json');
 const os = require("os");
+const fs = require('fs');
+const path = require('path');
 
 module.exports = () => {
     let root
@@ -24,4 +26,16 @@ module.exports = () => {
         quick.classList.add('nosel');
         quickAccess.appendChild(quick);
     });
+
+    if (fs.existsSync(path.join(__dirname, '../../', '/json/config/favorites.json'))) {
+        const pins = require('../../json/config/favorites.json');
+        let cfc = document.getElementById('custom-favorites-container');
+        Object.keys(pins).forEach(pin => {
+            let fav = document.createElement('div');
+            ['favorites-button', 'folder-pin', 'nosel'].forEach(x => fav.classList.add(x));
+            fav.innerHTML = pins[pin];
+            fav.onclick = () => {refresh(pin);};
+            cfc.appendChild(fav);
+        });
+    }
 };
