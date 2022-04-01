@@ -59,7 +59,7 @@ module.exports = () => {
         });
     });
 
-    clww.style = `height: ${modalOut.clientHeight - 6};`; // TODO cry enough tears that they magically make this line work
+    clww.style = `height: ${modalOut.clientHeight - 6};`;
 
     let msm = new Mousetrap(modal);
     msm.bind('esc', () => {
