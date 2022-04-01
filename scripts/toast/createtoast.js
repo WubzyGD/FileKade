@@ -40,7 +40,12 @@ module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, 
     timer.style.backgroundColor = timerColor;
     timer.style.animation = `toast-timer ${time}s linear`;
     toastWrap.appendChild(timer);
-    //toast.onmouseenter = () => {timer.style.animationPlayState = 'paused';};
+    toast.id = `toast-${window.kade.toasts.total}`;
     //toast.onmouseleave = () => {timer.style.animationPlayState = 'normal';};
     setTimeout(() => {if (continueTimeout) {removeToast(toast);}}, time * 1000);
+    window.kade.toasts.shown[window.kade.toasts.total] = {
+        timer,
+        toast,
+    };
+    window.kade.toasts.total++;
 };

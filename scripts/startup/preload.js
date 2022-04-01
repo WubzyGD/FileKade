@@ -23,7 +23,11 @@ window.addEventListener('DOMContentLoaded', () => {
             name: "Alpha",
             semver: require('../../package.json').version
         },
-        platform: undefined
+        platform: undefined,
+        toasts: {
+            total: 0,
+            shown: []
+        }
     };
 
     const platform = ipcRenderer.sendSync('preload', 'request-platform');
