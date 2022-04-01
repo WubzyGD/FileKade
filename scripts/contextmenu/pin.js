@@ -6,6 +6,7 @@ const refresh = require('../fileview/refresh');
 const newToast = require("../toast/createtoast");
 
 module.exports = () => {
+    if (!fs.existsSync(path.join(__dirname, '../../', '/json/config'))) {fs.mkdirSync(path.join(__dirname, '../../', '/json/config'));}
     let pins;
     if (fs.existsSync(path.join(__dirname, '../../', '/json/config/favorites.json'))) {
         pins = require('../../json/config/favorites.json');
