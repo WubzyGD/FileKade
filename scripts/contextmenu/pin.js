@@ -21,7 +21,6 @@ module.exports = () => {
     ['favorites-button', 'folder-pin', 'nosel'].forEach(x => fav.classList.add(x));
     fav.innerHTML = fta;
     fav.onclick = () => {refresh(tr);};
-    console.log(fta, window.kade.cpath.replace(/\\+/gm, '/'));
     cfc.appendChild(fav);
     createToast(
         "Folder Pinned", [`Folder "${fta}" was successfully pinned! You can now access it permanently in your sidebar!"`, `<em>${window.kade.cpath.replace(/\\+/gm, '/')}/${fta}</em>`], undefined, false, 5,
