@@ -95,6 +95,7 @@
     display: block;
     z-index: 200;
     position: relative;
+    cursor: pointer;
 }
 .close-button:before, .close-button:after {
     content: '';
