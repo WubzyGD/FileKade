@@ -1,6 +1,6 @@
 {
   "name": "filekade",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "A file explorer (primarily a learning experience for me)",
   "main": "main.js",
   "scripts": {
