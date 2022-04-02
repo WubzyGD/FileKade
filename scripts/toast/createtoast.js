@@ -8,8 +8,6 @@ module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, 
     toast.style.backgroundColor = `${bg}c2`;
     toast.style.borderColor = `${bg}c2`;
     toast.classList.add('toast-entering');
-    toast.onmouseenter = () => {toast.style.backgroundColor = bg;};
-    toast.onmouseleave = () => {toast.style.backgroundColor = `${bg}c2`;};
     let toastWrap = document.createElement('div');
     toastWrap.className = 'toast-wrapper';
     let continueTimeout = true;
@@ -40,7 +38,27 @@ module.exports = (name, text, bg = '#a172a6', persistOnClick = false, time = 5, 
     timer.style.backgroundColor = timerColor;
     timer.style.animation = `toast-timer ${time}s linear`;
     toastWrap.appendChild(timer);
-    //toast.onmouseenter = () => {timer.style.animationPlayState = 'paused';};
-    //toast.onmouseleave = () => {timer.style.animationPlayState = 'normal';};
-    setTimeout(() => {if (continueTimeout) {removeToast(toast);}}, time * 1000);
+    toast.id = `toast-${window.kade.toasts.total}`;
+    toast.onmouseenter = () => {
+        let ctoast = window.kade.toasts.shown[toast.id.slice(6)];
+        ctoast.toast.style.backgroundColor = bg;
+        ctoast.timer.style.animationPlayState = 'paused';
+        clearTimeout(ctoast.timeout);
+        ctoast.tl = ctoast.tt - (Date.now() - ctoast.ts);
+    };
+    toast.onmouseleave = () => {
+        let ctoast = window.kade.toasts.shown[toast.id.slice(6)];
+        ctoast.toast.style.backgroundColor = `${bg}c2`;
+        ctoast.timer.style.animationPlayState = 'running';
+        ctoast.timeout = setTimeout(() => {if (continueTimeout) {removeToast(ctoast.toast);}}, ctoast.tl);
+    };
+    window.kade.toasts.shown[window.kade.toasts.total] = {
+        timeout: setTimeout(() => {if (continueTimeout) {removeToast(toast);}}, time * 1000),
+        timer,
+        toast,
+        tl: time * 1000,
+        ts: Date.now(),
+        tt: time * 1000
+    };
+    window.kade.toasts.total++;
 };
