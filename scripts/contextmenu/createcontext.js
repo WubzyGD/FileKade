@@ -4,10 +4,10 @@ module.exports = (e, target, window) => {
     let ctx = document.getElementById('ctx');
     ctx.style.display = 'block';
     const ctxf = document.getElementById('ctx-folder');
-    if (target.classList.contains('file') || (target.parentElement && target.parentElement.classList.contains('file'))) {
+    if (target.classList.contains('folder') || (target.parentElement && target.parentElement.classList.contains('folder'))) {
         ctxf.style.display = 'block';
         ctxf.previousElementSibling.style.display = 'block';
-        if (target.classList.contains('file')) {window.kade.currentFolder = target.children[1].innerHTML.trim();}
+        if (target.classList.contains('folder')) {window.kade.currentFolder = target.children[1].innerHTML.trim();}
         else {window.kade.currentFolder = target.parentElement.children[1].innerHTML.trim();}
     } else {
         ctxf.style.display = 'none';

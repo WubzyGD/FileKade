@@ -13,6 +13,7 @@ module.exports = (dir, options) => {
         let cfc = document.createElement("div");
         cfc.className = 'file';
         if (options.animate) {cfc.classList.add('rise');}
+        if (file.type.toLowerCase().includes('folder')) {cfc.classList.add('folder');}
         cfc.onclick = function () {
             window.kade.elc = true;
             if (cfc.classList.contains('file-active')) {if (file.dir) {refresh(`${window.kade.cpath}/${file.name}`);}}
