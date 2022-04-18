@@ -66,7 +66,7 @@ module.exports = () => {
                 }
             );
         } catch {
-            newToast("Folder not Renamed", "An error caused that folder to not be renamed.", "#b24355", false, 5, () => {showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
+            newToast("Folder not Renamed", "An error caused that folder to not be renamed.", "#b24355", false, 5, () => {showError("Folder Renaming", "There was an unknown error while trying to rename that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
             clearModals();
         }
         postModal(modalOut.id);
