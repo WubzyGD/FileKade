@@ -18,13 +18,13 @@ module.exports = (dir, options) => {
             window.kade.elc = true;
             if (cfc.classList.contains('file-active')) {if (file.dir) {refresh(`${window.kade.cpath}/${file.name}`);}}
             cfc.classList.add('file-active');
-            if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
+            if (window.kade.cl && !cfc.isSameNode(window.kade.cl)) {window.kade.cl.classList.remove('file-active');}
             window.kade.cl = cfc;
         };
         cfc.oncontextmenu = function () {
             window.kade.elc = true;
             if (!cfc.classList.contains('file-active')) {cfc.classList.add('file-active');}
-            if (window.kade.cl) {window.kade.cl.classList.remove('file-active');}
+            if (window.kade.cl && !cfc.isSameNode(window.kade.cl)) {window.kade.cl.classList.remove('file-active');}
             window.kade.cl = cfc;
             window.kade.ctxel = cfc;
         };
