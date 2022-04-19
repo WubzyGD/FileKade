@@ -59,7 +59,7 @@ module.exports = () => {
         modalOut.remove();
         postModal(modalOut.id);
     });
-    msm.bind('enter', () => {conf.click(); console.log('hewwo');});
+    msm.bind('enter', () => {conf.click();});
     let close = document.createElement('a');
     close.className = 'close-button';
     close.onclick = () => {
