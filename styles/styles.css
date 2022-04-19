@@ -110,3 +110,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {background-image: linear-gradient(to bottom, #af2188ff 0%, #af2188ff 10%, #fa59cfff 75%, #fa59cfff 100%);}
+
+.invis {
+    position: relative;
+    left: -1000px;
+    width: 0;
+    height: 0;
+    padding: 0 0;
+    margin: 0 0;
+    opacity: 0;
+}

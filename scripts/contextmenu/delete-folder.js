@@ -53,7 +53,12 @@ module.exports = () => {
     };
     cont.appendChild(conf);
     cont.appendChild(cxl);
-    let msm = new Mousetrap();
+    let iin = document.createElement('input');
+    iin.className = 'invis';
+    iin.classList.add('nosel');
+    cont.appendChild(iin);
+    iin.focus();
+    let msm = new Mousetrap(modal);
     msm.bind('esc', () => {
         lightRefresh();
         modalOut.remove();
