@@ -9,6 +9,7 @@ const showError = require('../modal/common/error');
 const clearModals = require('../modal/clearmodals');
 const newToast = require('../toast/createtoast');
 const refresh = require('../fileview/refresh');
+const selectFolder = require('../fileview/selectfolder');
 
 module.exports = () => {
     if (window.kade.modal) {return;}
@@ -64,6 +65,10 @@ module.exports = () => {
                     newToast("Copied!", "<em>The folder's path has been copied to your clipboard.</em>", "#19df46");
                 }
             );
+            setTimeout(() => {
+                selectFolder(input.value);
+                setTimeout(() => window.kade.cl.click(), 100);
+            }, 100);
         } catch {
             newToast("Folder not Created", "An error caused that folder to not be created.", "#b24355", false, 5, () => {showError("Folder Creation", "There was an unknown error while trying to create that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
             clearModals();
