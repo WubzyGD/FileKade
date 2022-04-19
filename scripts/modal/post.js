@@ -1,8 +1,10 @@
 const transit = require("./transit");
 
 module.exports = (id) => {
-    document.getElementById('modal-block').remove();
-    window.kade.modal = false;
-    document.body.style.overflowY = 'overlay';
-    transit(id, false);
+    try {
+        try {document.getElementById('modal-block').remove();} catch {}
+        window.kade.modal = false;
+        document.body.style.overflowY = 'overlay';
+        transit(id, false);
+    } catch {}
 };

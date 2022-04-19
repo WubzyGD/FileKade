@@ -8,7 +8,6 @@ const postModal = require('../modal/post');
 const showError = require('../modal/common/error');
 const clearModals = require('../modal/clearmodals');
 const newToast = require('../toast/createtoast');
-const refresh = require('../fileview/refresh');
 
 module.exports = () => {
     if (window.kade.modal) {return;}
@@ -33,26 +32,34 @@ module.exports = () => {
     conf.innerHTML = 'Delete it!';
     let cxl = document.createElement('button');
     cxl.innerHTML = "Nevermind";
-    modal.appendChild(cxl);
+    cxl.onclick = () => {
+        lightRefresh();
+        modalOut.remove();
+        postModal(modalOut.id);
+    };
     conf.onclick = () => {
         try {
             fs.rmdirSync(path.join(window.kade.cpath, window.kade.currentFolder));
-            refresh(window.kade.cpath);
+            postModal(modalOut.id);
+            modalOut.remove();
+            lightRefresh(window.kade.cpath);
             newToast("Folder Deleted", "Your folder has been deleted successfully.");
         } catch {
             newToast("Folder not Deleted", "An error caused that folder to not be deleted.", "#b24355", false, 5, () => {showError("Folder Deletion", "There was an unknown error while trying to delete that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
             clearModals();
+            try {modalOut.remove();} catch {}
+            postModal(modalOut.id);
         }
-        postModal(modalOut.id);
     };
     cont.appendChild(conf);
-    let msm = new Mousetrap(modal);
+    cont.appendChild(cxl);
+    let msm = new Mousetrap();
     msm.bind('esc', () => {
         lightRefresh();
         modalOut.remove();
         postModal(modalOut.id);
     });
-    msm.bind('enter', () => {conf.click();});
+    msm.bind('enter', () => {conf.click(); console.log('hewwo');});
     let close = document.createElement('a');
     close.className = 'close-button';
     close.onclick = () => {
