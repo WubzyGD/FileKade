@@ -1,0 +1,1 @@
+{"log":{"Misc":["Small update here","Cleaned up a few bugs too small to really talk about here","Fixed a really nasty bug where the app would try to delete a folder a whole bunch of times","Clicking on the same file again won't make it visibly un-click","A folder will select itself after it's created"]},"version":{"name":"Alpha","semver":"1.6.4"}}
