@@ -16,6 +16,7 @@ module.exports = (check=false) => {
     for (const file of ldir) {
         let ofile = {};
         ofile.icon = fileIcon(`${dir}/${file}`, file);
+        ofile.trueName = file;
         ofile.name = trimext.includes(path.extname(file)) ? file.slice(0, file.length - path.extname(file).length) : file;
         try {ofile.type = fs.lstatSync(`${dir}/${file}`).isDirectory() ? "File Folder" : (extensions[(file.startsWith('.') ? file : path.extname(file)).slice(1)] || "File");}
         catch {ofile.type = `${path.extname(file)} File`.trim();}

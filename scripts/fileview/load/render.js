@@ -1,4 +1,7 @@
+const cp = require('child_process');
+
 const loadHierarchy = require("../hierarchy");
+const newToast = require('../../toast/createtoast');
 
 const isOverflowing = require('../../dep/overflowing');
 
@@ -16,7 +19,15 @@ module.exports = (dir, options) => {
         if (file.type.toLowerCase().includes('folder')) {cfc.classList.add('folder');}
         cfc.onclick = function () {
             window.kade.elc = true;
-            if (cfc.classList.contains('file-active')) {if (file.dir) {refresh(`${window.kade.cpath}/${file.name}`);}}
+            if (cfc.classList.contains('file-active')) {
+                if (file.dir) {refresh(`${window.kade.cpath}/${file.name}`);}
+                else {
+                    try {cp.exec(`${window.kade.cpath}/${file.trueName}`, {shell: 'powershell.exe'}, (error) => {
+                        if (error) {newToast("Error", "Unable to open file.", "#a4052b");}
+                    });}
+                    catch {newToast("Error", "Unable to open file.", "#a4052b");}
+                }
+            }
             cfc.classList.add('file-active');
             if (window.kade.cl && !cfc.isSameNode(window.kade.cl)) {window.kade.cl.classList.remove('file-active');}
             window.kade.cl = cfc;
