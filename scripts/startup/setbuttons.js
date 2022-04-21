@@ -11,6 +11,7 @@ module.exports = () => {
     backb.innerHTML = 'Go Back';
     backb.setAttribute('id', 'back-button');
     backb.className = 'header-button';
+    backb.classList.add('nosel');
     backb.onclick = () => {
         if (window.kade.cpath !== 'C:\\' && window.kade.cpath !== '\\') {refresh(path.join(window.kade.cpath, '..'));}
     };
@@ -19,6 +20,7 @@ module.exports = () => {
     let sb = document.createElement('p');
     sb.innerHTML = 'Sort by: Name';
     sb.className = 'header-button';
+    sb.classList.add("nosel");
     sb.onclick = () => {changesort();};
     sb.setAttribute('id', 'sort-button');
     hb.appendChild(sb);
@@ -26,6 +28,7 @@ module.exports = () => {
     let ob = document.createElement('p');
     ob.innerHTML = 'Ascending';
     ob.className = 'header-button';
+    ob.classList.add("nosel");
     ob.onclick = () => {changeascend();};
     ob.setAttribute('id', 'order-button');
     hb.appendChild(ob);
