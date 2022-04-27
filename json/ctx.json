@@ -1,6 +1,8 @@
 [
     [
-        {"name": "New Folder", "id": "ctx-new-folder", "onclick": "newfolder"}
+        {"name": "New Folder", "id": "ctx-new-folder", "onclick": "newfolder"},
+        {"name": "Compress", "id": "ctx-compress", "onclick": "compress"},
+        {"name": "Decompress", "id": "ctx-decompress", "onclick": "decompress"}
     ],
     [
         {"name": "Sort by: Name", "id": "ctx-sort-by", "onclick": "changesort"},
