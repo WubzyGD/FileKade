@@ -33,6 +33,7 @@ module.exports = () => {
     modal.appendChild(cont);
     let input = document.createElement('input');
     input.placeholder = window.kade.cpath.split(/\\+|\/+/gm).reverse()[0];
+    input.value = input.placeholder;
     input.id = 'compress-folder-input';
     let lastIn = '';
     input.oninput = () => {
@@ -45,7 +46,6 @@ module.exports = () => {
     conf.onclick = () => {
         try {
             input.value = input.value.trim();
-            if (!input.value.endsWith('.zip')) {input.value = `${input.value}.zip`;}
             if (!input.value.length) {return;}
             if (fs.existsSync(path.join(window.kade.cpath, input.value))) {
                 if (!input.value.match(/^.+\(\d\)$/gm)) {input.value += ' (1)';}
@@ -56,18 +56,29 @@ module.exports = () => {
                 }
                 return;
             }
+            input.style.display = 'none';
+            conf.style.display = 'none';
+            cont.style.display = 'none';
+            text.innerHTML = "Please wait a moment...";
             zip.addLocalFolderPromise(window.kade.cpath).then(() => {
-                modalOut.remove();
-                postModal(modalOut.id);
-                zip.writeZipPromise(`${window.kade.cpath}/${input.value}`, {overwrite: true}).then(() => {
-                    newToast("Folder compressed", [`The current folder was compressed into "${input.value}" created successfully`, `<em>${window.kade.cpath}/${input.value}</em>`], undefined, false, 5);
+                title.innerHTML += " - In Progress..."
+                text.innerHTML = "Your folder is being compressed. Please wait a moment.<br><br>This may take some time...";
+                closeWrap.style.display = 'none';
+                let bar = document.createElement('div');
+                bar.className = "loading-bar";
+                modal.appendChild(bar);
+                zip.writeZipPromise(`${window.kade.cpath}/${input.value}${input.value.endsWith('.zip') ? '' : '.zip'}`, {overwrite: true}).then(() => {
+                    newToast("Folder compressed", [`The current folder was compressed into "${input.value}" successfully`, `<em>${window.kade.cpath}/${input.value}</em>`], undefined, false, 5);
+                    lightRefresh();
+                    modalOut.remove();
+                    postModal(modalOut.id);    
                 });
             });
         } catch {
             newToast("Folder not Compressed", "An error caused that folder to not be compressed.", "#b24355", false, 5, () => {showError("Folder Creation", "There was an unknown error while trying to compress that folder. It may be a permissions issue, or the host folder doesn't exist anymore.");});
             clearModals();
+            postModal(modalOut.id);
         }
-        postModal(modalOut.id);
     };
     cont.appendChild(conf);
     input.focus();

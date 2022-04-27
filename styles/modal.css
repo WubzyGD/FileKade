@@ -135,3 +135,14 @@
 }
 
 #changelog-modal {max-height: 70vh;}
+
+.loading-bar {
+    width: 90%;
+    margin: 12px auto 10px auto;
+    border-radius: 3px;
+    padding: 0 0;
+    height: 5px;
+    animation: 12s linear infinite, moving-stripes 10s linear infinite;
+    background-image: repeating-linear-gradient(-45deg, #a172a6 10px, #5d60ca98, #a172a6 30px);
+    background-size: 200%;
+}

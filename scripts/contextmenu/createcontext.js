@@ -13,6 +13,7 @@ module.exports = (e, target, window) => {
         ctxf.style.display = 'none';
         ctxf.previousElementSibling.style.display = 'none';
     }
+    document.getElementById('ctx-decompress').style.display = 'none';
     ctx.style.left = `${Math.min(e.pageX, (window.innerWidth - (ctx.clientWidth + 2)))}px`;
     ctx.style.top = `${Math.min(e.pageY, ((window.innerHeight + window.scrollY) - (ctx.clientHeight + 2)))}px`;
 };
