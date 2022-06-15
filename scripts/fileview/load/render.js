@@ -19,7 +19,6 @@ module.exports = (dir, options) => {
         if (options.animate) {cfc.classList.add('rise');}
         if (file.dir) {cfc.classList.add('folder');}
         if (!file.dir && path.extname(path.join(window.kade.cpath, file.trueName)) === '.zip') {cfc.classList.add('zip');}
-        console.log(path.extname(path.join(window.kade.cpath, file.trueName)));
         cfc.onclick = function () {
             window.kade.elc = true;
             if (cfc.classList.contains('file-active')) {
