@@ -2,6 +2,7 @@
     [
         {"name": "New Folder", "id": "ctx-new-folder", "onclick": "newfolder"},
         {"name": "Compress", "id": "ctx-compress", "onclick": "compress"},
+        {"name": "Compress Selected", "id": "ctx-compress-selected", "onclick": "compress-selected"},
         {"name": "Decompress", "id": "ctx-decompress", "onclick": "decompress"}
     ],
     [

@@ -11,8 +11,9 @@ const clearModals = require('../modal/clearmodals');
 const newToast = require('../toast/createtoast');
 const refresh = require('../fileview/refresh');
 
-module.exports = () => {
+module.exports = (event, pathToCompress) => {
     let zip = new az();
+    if (!pathToCompress) {pathToCompress = window.kade.cpath;}
     if (window.kade.modal) {return;}
     preModal('compress-folder-modal-container');
     let modalOut = document.createElement('div');
@@ -32,7 +33,7 @@ module.exports = () => {
     cont.className = 'button-container';
     modal.appendChild(cont);
     let input = document.createElement('input');
-    input.placeholder = window.kade.cpath.split(/\\+|\/+/gm).reverse()[0];
+    input.placeholder = pathToCompress.split(/\\+|\/+/gm).reverse()[0];
     input.value = input.placeholder;
     input.id = 'compress-folder-input';
     let lastIn = '';
@@ -46,8 +47,9 @@ module.exports = () => {
     conf.onclick = () => {
         try {
             input.value = input.value.trim();
+            if (input.value.endsWith('.zip')) {input.value = input.value.slice(0, input.value.length - 4);}
             if (!input.value.length) {return;}
-            if (fs.existsSync(path.join(window.kade.cpath, input.value))) {
+            if (fs.existsSync(path.join(window.kade.cpath, `${input.value}.zip`))) {
                 if (!input.value.match(/^.+\(\d\)$/gm)) {input.value += ' (1)';}
                 else {
                     let tempstr = input.value.split('');
@@ -60,10 +62,10 @@ module.exports = () => {
             conf.style.display = 'none';
             cont.style.display = 'none';
             text.innerHTML = "Please wait a moment...";
-            zip.addLocalFolderPromise(window.kade.cpath).then(() => {
+            closeWrap.style.display = 'none';
+            zip.addLocalFolderPromise(pathToCompress).then(() => {
                 title.innerHTML += " - In Progress..."
                 text.innerHTML = "Your folder is being compressed. Please wait a moment.<br><br>This may take some time...";
-                closeWrap.style.display = 'none';
                 let bar = document.createElement('div');
                 bar.className = "loading-bar";
                 modal.appendChild(bar);
@@ -71,7 +73,7 @@ module.exports = () => {
                     newToast("Folder compressed", [`The current folder was compressed into "${input.value}" successfully`, `<em>${window.kade.cpath}/${input.value}</em>`], undefined, false, 5);
                     lightRefresh();
                     modalOut.remove();
-                    postModal(modalOut.id);    
+                    postModal(modalOut.id);
                 });
             });
         } catch {

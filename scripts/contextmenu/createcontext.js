@@ -4,14 +4,20 @@ module.exports = (e, target, window) => {
     let ctx = document.getElementById('ctx');
     ctx.style.display = 'block';
     const ctxf = document.getElementById('ctx-folder');
+    const compress = document.getElementById('ctx-compress');
+    const compsel = document.getElementById('ctx-compress-selected');
     if (target.classList.contains('folder') || (target.parentElement && target.parentElement.classList.contains('folder'))) {
         ctxf.style.display = 'block';
         ctxf.previousElementSibling.style.display = 'block';
         if (target.classList.contains('folder')) {window.kade.currentFolder = target.children[1].innerHTML.trim();}
         else {window.kade.currentFolder = target.parentElement.children[1].innerHTML.trim();}
+        compress.style.display = 'none';
+        compsel.style.display = 'block';
     } else {
         ctxf.style.display = 'none';
         ctxf.previousElementSibling.style.display = 'none';
+        compress.style.display = 'block';
+        compsel.style.display = 'none';
     }
     document.getElementById('ctx-decompress').style.display = 'none';
     ctx.style.left = `${Math.min(e.pageX, (window.innerWidth - (ctx.clientWidth + 2)))}px`;
