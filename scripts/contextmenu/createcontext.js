@@ -19,7 +19,13 @@ module.exports = (e, target, window) => {
         compress.style.display = 'block';
         compsel.style.display = 'none';
     }
-    document.getElementById('ctx-decompress').style.display = 'none';
+    if (target.classList.contains('zip') || (target.parentElement && target.parentElement.classList.contains('zip'))) {
+        if (target.classList.contains('zip')) {window.kade.currentFolder = target.children[1].innerHTML.trim();}
+        else {window.kade.currentFolder = target.parentElement.children[1].innerHTML.trim();}
+        document.getElementById('ctx-decompress').style.display = 'block';
+    } else {
+        document.getElementById('ctx-decompress').style.display = 'none';
+    }
     ctx.style.left = `${Math.min(e.pageX, (window.innerWidth - (ctx.clientWidth + 2)))}px`;
     ctx.style.top = `${Math.min(e.pageY, ((window.innerHeight + window.scrollY) - (ctx.clientHeight + 2)))}px`;
 };
